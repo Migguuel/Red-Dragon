@@ -160,14 +160,14 @@ async function startKUMUTHU() {
     store.bind(KUMUTHU.ev)
     
     // anticall auto block
-    if (global.callblock === "true"){
+    if (global.callblock === "false"){
     KUMUTHU.ws.on('CB:call', async (json) => {
     const callerId = json.content[0].attrs['call-creator']
     if (json.content[0].tag == 'offer') {
     let xeonfek = await KUMUTHU.sendContact(callerId, global.owner)
     KUMUTHU.sendMessage(callerId, { text: `⚠️RED-DRAGON Automatic Block System!\n⚠️Don't Call Bot!\n⚠️Please Ask Or Contact The Owner To Unblock You!`}, { quoted : xeonfek })
     await sleep(8000)
-    await KUMUTHU.updateBlockStatus(callerId, "block")
+    await KUMUTHU.updateBlockStatus(callerId, "")
     }
     })}else{}
 
@@ -246,7 +246,7 @@ XeonLft = await getBuffer(`https://hardianto.xyz/api/goodbye3?profile=${encodeUR
                 if (anu.action == 'add') {
                 const xeonbuffer = await getBuffer(ppuser)
                 let xeonName = num
-                const xtime = moment.tz('Asia/Kolkata').format('HH:mm:ss')
+                const xtime = moment.tz('Africa/Tripoli').format('HH:mm:ss')
 	            const xdate = moment.tz('Asia/Kolkata').format('YYYY/MM/DD')
 	            const xmembers = metadata.participants.length
                 let unicorndoc = {key: {fromMe: false,"participant":"0@s.whatsapp.net", "remoteJid": "916909137213-1604595598@g.us"}, "message": {orderMessage: {itemCount: 9999999,status: 200, thumbnail: XeonWlcm, surface: 200, message: `${metadata.subject}`, orderTitle: 'xeon', sellerJid: '0@s.whatsapp.net'}}, contextInfo: {"forwardingScore":999,"isForwarded":true},sendEphemeral: true}
@@ -369,7 +369,7 @@ KUMUTHU.sendMessage(anu.id, buttonMessage)
         return status
     }
 	
-    KUMUTHU.public = true
+    KUMUTHU.public = false
 
     KUMUTHU.serializeM = (m) => smsg(KUMUTHU, m, store)
 
